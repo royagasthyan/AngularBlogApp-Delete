@@ -1,0 +1,43 @@
+<div class="list-group">
+
+        <a *ngFor="let post of posts" class="list-group-item list-group-item-action flex-column align-items-start">
+            <div class="d-flex w-100 justify-content-between">
+                <h5 class="mb-1">{{post.title}}</h5>
+                <small>3 days ago</small>
+            </div>
+            <p class="mb-1">{{post.description}}</p>
+
+           
+           <div class="d-flex w-100 justify-content-between">
+            <small>read more...</small>
+
+            <div>
+                <i title="Edit" class="fas fa-edit" (click)="editPost(post)" aria-hidden="true"></i>
+                <i (click)="setDelete(post)" data-toggle="modal" data-target="#deleteModal" title="Delete" class="fas fa-trash-alt" aria-hidden="true"></i>
+            </div>
+           
+           </div>
+        </a>
+       
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Delete Post</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Are you sure ?
+      </div>
+      <div class="modal-footer">
+        <button #closeBtn (click)="unsetDelete()" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button (click)="deletePost()" type="button" class="btn btn-primary">Delete</button>
+      </div>
+    </div>
+  </div>
+</div>
